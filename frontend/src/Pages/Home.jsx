@@ -4,9 +4,8 @@ import Banner from '../Componants/Banner'
 
 export default function Home() {
   return (
-    <div>
-        <Header/>
-        <Banner/>
+    <div className='w-96 '>
+      <Header/>
 
     </div>
   )
