@@ -4,7 +4,7 @@ import Banner from '../Componants/Banner'
 
 export default function Home() {
   return (
-    <div className='w-96 '>
+    <div className=' w-full bg-slate-700'>
       <Header/>
 
     </div>
