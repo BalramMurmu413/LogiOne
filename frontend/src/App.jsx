@@ -1,13 +1,24 @@
 import './App.css'
+import MyApps from './Componants/MyApps'
+import Contact from './Pages/Contact.jsx'
 import Home from './Pages/Home'
-
+import {Routes , Route} from 'react-router-dom'
+import Login from './Pages/Login.jsx'
 function App() {
 
   return (
     <>
-<div>
-  <Home/>
-</div>
+
+  <Routes >
+    <Route path='/' element = {<Home/>}/>
+    <Route path='/myapps' element = {<MyApps/>}/>
+    <Route path='/contact' element = {<Contact/>}/>
+    <Route path='/myapps' element = {<MyApps/>}/>
+    <Route path='/myapps' element = {<MyApps/>}/>
+    <Route path='/login' element = {<Login/>}/>
+
+  </Routes>
+
 
     </>
   )
