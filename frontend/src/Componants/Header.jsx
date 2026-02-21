@@ -7,6 +7,34 @@ import { IoClose } from "react-icons/io5";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(true)
 
+  const Links = [
+    {
+      title  : "Home",
+      icon  : " logo.jpg"
+    },
+     {
+      title  : "Prospectuse",
+      icon  : " logo.jpg"
+    }, {
+      title  : "Department",
+      icon  : " logo.jpg"
+    }, {
+      title  : "Services",
+      icon  : " logo.jpg"
+    }, {
+      title  : "Administrator",
+      icon  : " logo.jpg"
+    }, {
+      title  : "Notice",
+      icon  : " logo.jpg"
+    }, {
+      title  : "About us",
+      icon  : " logo.jpg"
+    }, {
+      title  : "Contact",
+      icon  : " logo.jpg"
+    },
+  ]
 
   return (
     <>
@@ -55,8 +83,9 @@ export default function Header() {
       </section>
       <div className={`z-10 w-full  bg-slate-500 md:hidden rounded-md transition-all duration-300 ease-in-out  top-0 ${isOpen ? ' mt-24 left-200 ' : " mt-24  left-0"}`} >
         <div className=''>
-          <ul className='flex top-0 text-black flex-col w-full items-start ml-10  gap-1 py-3'>
-            <li className='cursor-pointer'>Home</li>
+ <ul className='flex top-0 text-black flex-col w-full items-start ml-10  gap-1 py-3'>
+
+
             <li className='relative cursor-pointer group'>Administrator  
               <ul class=" ml-20  rounded  shadow-lg w-48 z-50">
              <li>
@@ -106,42 +135,22 @@ export default function Header() {
 
       <hr className='w-[90%] m-auto opacity-10 ' />
 
-      <section className=' w-2/4 sticky top-0 ml-50  hidden md:block' >
+      <section className=' w-[1000px] m-auto sticky top-0  hidden md:block' >
         <div >
-          <ul className=' flex   py-4 flex-row w-full  items-center justify-around'>
-           <Link to='/'> <li className='cursor-pointer'>Home</li> </Link>
-            <li className='relative cursor-pointer group'>Administrator  <div class="absolute rounded hidden group-hover:block shadow-lg w-48 z-10">
-              <a href cursor-pointer="#" class="block px-4 py-2 rounded  bg-orange-300 hover:bg-slate-300">Administrator 1</a>
-              <a href cursor-pointer="#" class="block px-4 py-2  bg-orange-300 hover:bg-slate-300">Administrator 2</a>
-              <a href cursor-pointer="#" class="block px-4 py-2  bg-orange-300 hover:bg-slate-300">Administrator 3</a>
-            </div>
-            </li>
-
-            <li className='relative group cursor-pointer'>Services  <div class="absolute hidden rounded group-hover:block shadow-lg w-48 z-10">
-              <a href cursor-pointer="#" class="block px-4 py-2 rounded hover:bg-gray-7 00">Service 1</a>
-              <a href cursor-pointer="#" class="block px-4 py-2  bg-orange-300 hover:bg-slate-300">Service 2</a>
-              <a href cursor-pointer="#" class="block px-4 py-2  bg-orange-300 hover:bg-slate-300">Service 3</a>
-            </div>
-            </li>
-
-            <li className='relative group cursor-pointer'>Recruitement  <div class="absolute rounded hidden group-hover:block shadow-lg w-48 z-10">
-              <a href="#" class="block px-4 py-2 hover:rounded">Recruitement 1</a>
-              <a href="#" class="block px-4 py-2  bg-orange-300 hover:bg-slate-300">Recruitement 2</a>
-              <a href="#" class="block px-4 py-2  bg-orange-300 hover:bg-slate-300">Recruitement 3</a>
-            </div>
-            </li>
-            <li className='relative group cursor-pointer'>About us  <div class="absolute rounded hidden group-hover:block shadow-lg w-48 z-10">
-              <a href="#" class="block px-4 py-2 hover:rounded">About us 1</a>
-              <a href="#" class="block px-4 py-2  bg-orange-300 hover:bg-slate-300">About us 2</a>
-              <a href="#" class="block px-4 py-2  bg-orange-300 hover:bg-slate-300">About us 3</a>
-            </div>
-            </li>
-             <Link to='/contact'><li>Contact</li></Link>
+          <ul className=' flex  py-4 flex-row w-full  items-center justify-around'>
+            {
+  Links.map(
+    (items, index) => {
+    return <li key={index} className='cursor-pointer text-sm font-semibold relative  group hover:myColour'> 
+      {items.title}
+      </li>
+  })
+}
 
           </ul>
         </div>
       </section>
-      <hr className='w-full m-auto opacity-20 text-fuchsia-800' />
+      <hr className='w-full sticky top-13 m-auto opacity-20 text-fuchsia-800' />
     </>
   )
 }
