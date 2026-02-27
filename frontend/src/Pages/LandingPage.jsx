@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { HiLocationMarker } from "react-icons/hi";
 import { PiCaretLeftBold } from "react-icons/pi";
-
+import FoodApi from '../Api/FoodAPi';
 
 export default function LandingPage() {
 const Links = [
@@ -20,13 +20,27 @@ const Links = [
     },
 ]
 
+
+
+
+console.log(FoodApi)
+
+
 const [location, setLocation] = useState([])
+const [foodApi, setFoodApi] = useState([])
+const fetchFoodAPI = async()=>{
+    const responce = await fetch('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?tags=vegetarian%2Cdessert&number=1')
+    const data = await responce.json()
+    setFoodApi(data)
+}
 
 const fetchLocationAPI =  async ()=>  {
-const response = await fetch("https://geo.kamero.ai/api/geo")
+const response = await fetch("https://wft-geo-db.p.rapidapi.com/v1/geo/places/%7BplaceId%7D/distance?toPlaceId=Q60")
 const data = await response.json()
 setLocation(data)
 }
+console.log(foodApi)
+console.log(location)
 
 useEffect (
     ()=>{
@@ -73,12 +87,32 @@ useEffect (
     </div>     
 
 
+
+
 <div className='flex w-[960px] justify-around'>
-    <div className='h-[300px] w-[280px]  rounded-4xl bg-white'>1</div>
-     <div className='h-[300px] w-[280px]  rounded-4xl bg-white'>1</div>   
-     <div className='h-[300px] w-[280px]  rounded-4xl bg-white'>1</div>   
-</div>
-</div>
+        {
+            FoodApi.map((item, index) =>{
+                return <>
+                    <div className='h-[300px] shrink-0 gap-3 w-[300px] rounded-4xl bg-white text-black flex-col flex items-start overflow-hidden  justify-between py-5 px-8'>
+                 <div className='items-start flex flex-col '>
+            <h1 className='font-bold text-3xl'>{item.title}</h1>
+            <p className='font-semibold text-2xl'>{item.hotel}</p>
+            <span className='font-semibold text-xl bg-orange-200 rounded-xl px-2  text-orange-600'>{item.offer}</span>
+        </div>
+        <div className='flex flex-row items-end m-auto justify-between pb-4 border'>
+            <span className='w-[43px] rounded-full h-[43px] flex items-center justify-center bg-orange-600'>
+        <IoIosArrowRoundForward className='text-4xl font-bold '/>
+            </span>
+        <img src={item.thumbnail} alt="" className='w-[150px]' />
+
+        </div>
+        </div> 
+                </>
+            })
+        }
+        </div>
+       
+        </div>
 
 
 
