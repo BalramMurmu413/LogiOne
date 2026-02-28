@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { HiLocationMarker } from "react-icons/hi";
 import { PiCaretLeftBold } from "react-icons/pi";
-import FoodApi from '../Api/FoodAPi';
+import Card from '../Componants/Card';
+import FoodCards from '../Componants/FoodCards';
 
 export default function LandingPage() {
 const Links = [
@@ -19,27 +20,13 @@ const Links = [
         icon: ""
     },
 ]
-
-
-
-
-console.log(FoodApi)
-
-
 const [location, setLocation] = useState([])
-const [foodApi, setFoodApi] = useState([])
-const fetchFoodAPI = async()=>{
-    const responce = await fetch('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?tags=vegetarian%2Cdessert&number=1')
-    const data = await responce.json()
-    setFoodApi(data)
-}
 
 const fetchLocationAPI =  async ()=>  {
 const response = await fetch("https://wft-geo-db.p.rapidapi.com/v1/geo/places/%7BplaceId%7D/distance?toPlaceId=Q60")
 const data = await response.json()
 setLocation(data)
 }
-console.log(foodApi)
 console.log(location)
 
 useEffect (
@@ -72,10 +59,13 @@ useEffect (
 
     <div className=' flex items-center flex-col justify-center h-screen mt-15'>
     <div> 
-        <h1 className='text-5xl font-bold'>Order food. Discover best <br /> restaurants. Swiggy it!</h1>
+        <h1 className='text-5xl flex text-slate-800 font-bold items-center justify-between flex-col'>
+            <span>Order food. Discover best</span>
+            <span> restaurants. Swiggy it!</span>
+        </h1>
     </div>
 
-    <div className='flex gap-10 my-15'>
+    <div className='flex  w-3/5  justify-around  gap-10 my-15'>
         <div className='flex items-center'>     
         <HiLocationMarker className='inline absolute text-orange-500 w-[26px] h-[26px] ml-2'/>
          <input  type="text" placeholder='Enter your  delivery location' className='text-slate-900 font-semibold px-10 bg-white py-4 min-w-96 rounded-xl outline-0 '/>
@@ -88,29 +78,8 @@ useEffect (
 
 
 
+<Card/>
 
-<div className='flex w-[960px] justify-around'>
-        {
-            FoodApi.map((item, index) =>{
-                return <>
-                    <div className='h-[300px] shrink-0 gap-3 w-[300px] rounded-4xl bg-white text-black flex-col flex items-start overflow-hidden  justify-between py-5 px-8'>
-                 <div className='items-start flex flex-col '>
-            <h1 className='font-bold text-3xl'>{item.title}</h1>
-            <p className='font-semibold text-2xl'>{item.hotel}</p>
-            <span className='font-semibold text-xl bg-orange-200 rounded-xl px-2  text-orange-600'>{item.offer}</span>
-        </div>
-        <div className='flex flex-row items-end m-auto justify-between pb-4 border'>
-            <span className='w-[43px] rounded-full h-[43px] flex items-center justify-center bg-orange-600'>
-        <IoIosArrowRoundForward className='text-4xl font-bold '/>
-            </span>
-        <img src={item.thumbnail} alt="" className='w-[150px]' />
-
-        </div>
-        </div> 
-                </>
-            })
-        }
-        </div>
        
         </div>
 
@@ -118,6 +87,7 @@ useEffect (
 
 
 </section>
+<FoodCards/>
     </>
   )
 }

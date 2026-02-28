@@ -4,6 +4,7 @@ import Banner from '../Componants/Banner'
 import MyApps from '../Componants/MyApps'
 import Contact from './Contact'
 import Footer from '../Componants/Footer'
+import LandingPage from './LandingPage'
 
 export default function Home() {
 
@@ -19,6 +20,7 @@ export default function Home() {
     </div>
       <Header/>
     <div className=' w-full h-screen'>
+      <LandingPage/>
 
       </div>
       <Footer/>

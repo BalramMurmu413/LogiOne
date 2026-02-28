@@ -40,7 +40,7 @@ export default function Header() {
     <>
       <section className=' w-[90%]   h-10 my-2 m-auto text-slate-300  flex flex-row items-center justify-between '>
         <div className='w-1/4 ml-5  '>
-          <h1 className='text-3xl  font-bold text-slate-800 cursor-pointer'><Link to='/'> Balram</Link></h1>
+          <h1 className='text-3xl       font-bold text-slate-800 cursor-pointer'><Link to='/'> Balram</Link></h1>
         </div>
 
         <div className='w-1/2  '>
